@@ -6,7 +6,12 @@ interface User {
 }
 
 const UsersPage = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const res = await fetch(
+    "https://jsonplaceholder.typicode.com/users",
+    // { cache: 'no-store' } - usefull if you have data that changes frequently
+    { next: { revalidate: 10 } } // this 'next' obj can specify config params that nextjs specific
+    // revalidate: 10 - means that next js is going to run a background job and get fresh data from the backend every 10s
+  );
   const users: User[] = await res.json();
   return (
     <>
