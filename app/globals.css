@@ -17,10 +17,5 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
   padding: 1rem;
-}
-
-h1 {
-  color: black;
 }
