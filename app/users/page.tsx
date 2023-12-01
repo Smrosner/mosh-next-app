@@ -15,3 +15,6 @@ const UsersPage = async ({ searchParams: { sortOrder } }: Props) => {
 };
 
 export default UsersPage;
+
+// git config --global user.name "Your Name"
+// git config --global user.email "you@example.com"
