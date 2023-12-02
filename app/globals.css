@@ -12,11 +12,12 @@
   }
 }
 
-body {
-  padding: 1rem;
-  /* color: rgb(var(--foreground-rgb)); */
-}
+/* body {
+  color: rgb(var(--foreground-rgb));
+} */
 
-h1 {
-  font-size: xx-large;
+@layer base {
+  h1 {
+    @apply font-bold text-2xl mb-3;
+  }
 }
