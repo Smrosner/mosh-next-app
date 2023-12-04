@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/prisma/client";
 
 interface Props {
   params: {
@@ -8,22 +9,24 @@ interface Props {
   };
 }
 
-export function Get(
+export async function GET(
   request: NextRequest,
   {
     params,
   }: {
     params: {
-      id: number;
+      id: string;
       name: string;
       price: number;
     };
   }
 ) {
-  if (!params.id)
-    return NextResponse.json({ error: "User not fount" }), { status: 404 };
-  return NextResponse.json([
-    { id: 1, name: "Milk", price: 2.5 },
-    { id: 2, name: "Bread", price: 3.5 },
-  ]);
+  const product = await prisma.product.findUnique({
+    where: { id: parseInt(params.id) },
+  });
+
+  if (!product)
+    return NextResponse.json({ error: "Product not fount" }), { status: 404 };
+
+  return NextResponse.json(product);
 }
