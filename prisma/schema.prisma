@@ -14,9 +14,10 @@ datasource db {
 // "npx Prisma format" to clean up models
 // Prisma data model docs: https://www.prisma.io/docs/concepts/components/prisma-schema/data-model
 model User {
-  id        Int     @id @default(autoincrement())
-  email     String  @unique
-  name      String
-  followers Int     @default(0)
-  isActive  Boolean @default(true)
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  name         String
+  followers    Int      @default(0)
+  isActive     Boolean  @default(true)
+  registeredAt DateTime @default(now())
 }
