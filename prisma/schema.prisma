@@ -1,0 +1,22 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// Prisma/Mysql docs: https://www.prisma.io/docs/concepts/database-connectors/mysql
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// "npx Prisma format" to clean up models
+// Prisma data model docs: https://www.prisma.io/docs/concepts/components/prisma-schema/data-model
+model User {
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  name      String
+  followers Int     @default(0)
+  isActive  Boolean @default(true)
+}
